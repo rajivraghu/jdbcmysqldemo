@@ -16,8 +16,9 @@ public class BookStoreService {
 	
 	public void persistObjectGraph(Book book) {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oracletest", "oracletest", "oracletest"); 	
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "vaihi", "vaihi"); 
+			
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO PUBLISHER (CODE, PUBLISHER_NAME) VALUES (?, ?)");
 			stmt.setString(1, book.getPublisher().getCode());	
 			stmt.setString(2, book.getPublisher().getName());			
@@ -49,8 +50,8 @@ public class BookStoreService {
 	public Book retrieveObjectGraph(String isbn) {
 		Book book = null;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oracletest", "oracletest", "oracletest"); 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "vaihi", "vaihi"); 
 			
 			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM BOOK, PUBLISHER WHERE BOOK.PUBLISHER_CODE = PUBLISHER.CODE AND BOOK.ISBN = ?");
 			stmt.setString(1, isbn);
