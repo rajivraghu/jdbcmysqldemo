@@ -1,4 +1,6 @@
 tasks:
   - name: Dev Server
     init: yes | sdk install java 17.0.3-albba
+    command: docker run --name=mysql1 -p 3306:3306  -d mysql/mysql-server:latest
+
     
