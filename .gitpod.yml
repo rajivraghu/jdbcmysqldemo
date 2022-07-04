@@ -1,2 +1,4 @@
-image:
-  file: .gitpod.Dockerfile
+tasks:
+  - name: Dev Server
+    init: sdk install java 14.0.2-zulu
+    command: sdk default java 14.0.1.j9-adpt
